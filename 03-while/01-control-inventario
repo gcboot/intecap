@@ -1,0 +1,11 @@
+# -- Problema 1: Control de inventario
+# Este programa inicia con 20 consolas y va restando una en cada vuelta del ciclo hasta llegar a cero.
+
+
+consolas = 20 # Inventario inicial 
+
+while consolas > 0:
+    print(f"Consolas restantes por registrar: {consolas}")
+    consolas -= 1 # Disminuimos una por cada registro 
+
+print("Registro completado. Inventario en cero.")
