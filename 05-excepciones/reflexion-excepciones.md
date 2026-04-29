@@ -1,0 +1,2 @@
+# Reflexión
+Al aplicar estas soluciones, el código se vuelve robusto. En lugar de que el usuario vea un mensaje técnico incomprensible y el programa se cierre, recibe una explicación clara de qué salió mal, permitiendo que el flujo de trabajo continúe.
