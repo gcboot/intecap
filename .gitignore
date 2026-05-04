@@ -1,2 +1,17 @@
+
+# Archivo .gitignore para el proyecto de aprendizaje de Python
+
+# Ignorar archivos de sistema y de configuración
 .DS_Store
-.env
+
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Entornos virtuales
+venv/
+env/
+.venv/
