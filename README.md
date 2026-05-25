@@ -4,6 +4,8 @@ Este repositorio contiene una colección de ejercicios, guías y hojas de trabaj
 📂 Contenido del Repositorio
 El proyecto está organizado en secciones que cubren desde los fundamentos hasta conceptos avanzados:
 
+Estructura por módulos: `modulo_1/` contiene el contenido actual y `modulo_2/` está preparado para el siguiente bloque.
+
 Fundamentos de Lógica: Ejercicios con ciclos for y while (como el generador de boletos y acumuladores de precios).
 
 Estructuras de Datos: Manejo de listas y colecciones de productos.
