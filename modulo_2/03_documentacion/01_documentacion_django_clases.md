@@ -107,8 +107,6 @@ print(f"¿Fue creado? {created}")
 8. Listar los registros para modelos creados dentro de aplicaciones (módulos)
 
 
-8. Listar los registros para modelos creados dentro de aplicaciones (módulos)
-
 ```python
 ### Desde Django shell (python manage.py shell)
 from blog.models import Post
