@@ -1,6 +1,12 @@
 # Documentación Django
 
-1. Crear proyectos nuevos con Django
+Esta guía detalla los pasos fundamentales para la creación, configuración y administración de proyectos en Django, incluyendo la manipulación de la base de datos a través del ORM desde el shell interactivo.
+
+---
+
+## 1. Crear proyectos nuevos con Django
+
+Pasos básicos en la terminal para configurar un entorno virtual e inicializar el proyecto:
 
 ```shell
 mkdir mysite
@@ -11,15 +17,21 @@ pip install django
 django-admin startproject config .
 ```
 
-2. Crear aplicaciones (modulos) de django dentro de un proyecto
+---
+
+## 2. Crear aplicaciones (módulos) de Django dentro de un proyecto
    
 ```shell
 python manage.py startapp blog
 ```
-3. Crear modelos por medio de clases dentro de aplicaciones (módulos) de Django
+
+---
+
+## 3. Crear modelos por medio de clases dentro de aplicaciones (módulos) de Django
    
+### 3.1. Definición del modelo (`blog/models.py`)
+
 ```python
-### 1. models.py dentro de la aplicación blog
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
@@ -36,8 +48,11 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', args=[str(self.id)])
+```
 
-### 2. Settings.py de config agregaamos la aplicación
+### 3.2. Registrar la aplicación en la configuración (`config/settings.py`)
+
+```python
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,30 +62,39 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
 ]
-
 ```
 
-4. Preparar migraciones en proyectos de Django
+---
+
+## 4. Preparar migraciones en proyectos de Django
+
 ```shell
 python manage.py makemigrations blog
-
 ```
 
-5. Ejecutar migraciones en proyectos de Django
+---
+
+## 5. Ejecutar migraciones en proyectos de Django
+
 ```shell
 python manage.py migrate blog
 ```
 
-6. Entrar a la consola (shell) de Python con Djangopython 
+---
+
+## 6. Entrar a la consola (shell) de Python con Django
 
 ```shell
 python manage.py shell
 ```
 
-7. Crear nuevos registros para modelos creados dentro de aplicaciones (módulos)
+---
+
+## 7. Crear nuevos registros para modelos creados dentro de aplicaciones (módulos)
+
+*Ejecutar desde el Django shell (`python manage.py shell`):*
 
 ```python
-### Desde Django shell (python manage.py shell)
 from blog.models import Post
 from django.contrib.auth.models import User
 
@@ -104,11 +128,13 @@ post, created = Post.objects.get_or_create(
 print(f"¿Fue creado? {created}")
 ```
 
-8. Listar los registros para modelos creados dentro de aplicaciones (módulos)
+---
 
+## 8. Listar los registros para modelos creados dentro de aplicaciones (módulos)
+
+*Ejecutar desde el Django shell (`python manage.py shell`):*
 
 ```python
-### Desde Django shell (python manage.py shell)
 from blog.models import Post
 
 # Método 1: Obtener todos los registros en un QuerySet
@@ -123,13 +149,15 @@ print(list(titulos))
 # Método 3: Obtener una lista plana de un solo campo con values_list()
 lista_titulos = Post.objects.values_list('title', flat=True)
 print(list(lista_titulos))
-
 ```
-9. Modificar registros para modelos creados dentro de aplicaciones (módulos)
+
+---
+
+## 9. Modificar registros para modelos creados dentro de aplicaciones (módulos)
+
+*Ejecutar desde el Django shell (`python manage.py shell`):*
 
 ```python
-
-### Desde Django shell (python manage.py shell)
 from blog.models import Post
 
 # Método 1: Obtener un registro por ID, modificarlo y guardarlo con save()
@@ -140,14 +168,15 @@ post.save()
 # Método 2: Modificar múltiples registros a la vez con update()
 # Nota: Esto se aplica sobre un QuerySet y guarda los cambios inmediatamente
 Post.objects.filter(title="Segundo post").update(content="Nuevo contenido para el segundo post")
-
 ```
 
-10. Eliminar registros para modelos creados dentro de aplicaciones (módulos)
+---
+
+## 10. Eliminar registros para modelos creados dentro de aplicaciones (módulos)
+
+*Ejecutar desde el Django shell (`python manage.py shell`):*
 
 ```python
-
-### Desde Django shell (python manage.py shell)
 from blog.models import Post
 
 # Método 1: Obtener un registro específico por ID y eliminarlo
@@ -160,13 +189,15 @@ Post.objects.filter(title="Post único").delete()
 
 # Método 3: Eliminar absolutamente TODOS los registros del modelo
 # Post.objects.all().delete()
-
 ```
-11. Filtrar para obtener ciertos registros para modelos creados dentro de aplicaciones (módulos)
+
+---
+
+## 11. Filtrar para obtener ciertos registros para modelos creados dentro de aplicaciones (módulos)
+
+*Ejecutar desde el Django shell (`python manage.py shell`):*
 
 ```python
-
-### Desde Django shell (python manage.py shell)
 from blog.models import Post
 from django.contrib.auth.models import User
 
@@ -186,12 +217,4 @@ posts_especificos = Post.objects.filter(author=user).filter(title__icontains="po
 
 # Método 5: Obtener un único registro (lanza error si no existe o si hay más de uno)
 un_solo_post = Post.objects.get(title="Mi primer post (Editado)")
-
-
 ```
-
-
-
-
-
-
