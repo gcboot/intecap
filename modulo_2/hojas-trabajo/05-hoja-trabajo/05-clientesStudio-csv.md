@@ -19,6 +19,9 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
+![Activar entorno virtual en Warp](images/warp_activate_venv.jpg)
+
+
 ---
 
 ## 🛠️ Instrucciones de Implementación
@@ -88,6 +91,9 @@ class Cliente(models.Model):
         verbose_name = "Cliente"
         verbose_name_plural = "Clientes"
 ```
+
+![Configurar Verbose Names en VS Code](images/vscode_models_py.jpg)
+
 
 ---
 
@@ -167,5 +173,17 @@ class ClienteAdmin(admin.ModelAdmin):
 admin.site.register(Cliente, ClienteAdmin)
 ```
 
+![Agregar Acción de Exportación en VS Code](images/vscode_admin_py.jpg)
+
+
 > [!TIP]
 > Recuerda aplicar las migraciones de Django si realizaste modificaciones en los campos del modelo `Cliente` ejecutando `python manage.py makemigrations` y luego `python manage.py migrate`.
+
+![Ejecutar migraciones en Warp](images/warp_django_migrations.jpg)
+
+### 7. Verificar el funcionamiento en Django Admin
+
+Una vez aplicadas las migraciones y registradas las acciones en el panel de administración, podrás seleccionar múltiples clientes y utilizar la acción **Exportar registros seleccionados a CSV** desde el menú de acciones:
+
+![Acción de exportación a CSV en Django Admin](images/django_admin_csv_action.jpg)
+
